@@ -1,0 +1,76 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+// message User {
+//     string id = 1;
+//     string email = 2;
+//     string name = 3;
+//     string phone_number = 4;
+//     int32 age = 5;
+//     Gender gender = 6;
+//     string profile_photo = 7;
+// }
+
+enum Gender {
+    Male = 0;
+    Female = 1;
+    Others = 2;
+}
+
+message Rider {
+    // User rider = 1;
+    string rider_id = 1;
+    string email = 2;
+    string name = 3;
+    string phone_number = 4;
+    int32 age = 5;
+    Gender gender = 6;
+    string profile_photo = 7;
+}
+
+message Driver {
+    // User driver = 1;
+    string driver_id = 1;
+    string email = 2;
+    string name = 3;
+    string phone_number = 4;
+    int32 age = 5;
+    Gender gender = 6;
+    string profile_photo = 7;
+
+    // string car_model = 2;
+    // string car_number = 3;
+    // string driver_license = 4;
+    // string car_photo = 5;
+    // string registration_certificate = 6;
+    // string vehicle_insurance = 7;
+    // string contract_carriage_permit = 8;
+    // string tourist_taxi_permit = 9;
+}
+
+message Location {
+    double latitude = 1;
+    double longitude = 2;
+}
+
+message Ride {
+    string ride_id = 1;
+    Rider rider = 2;
+    Driver driver = 3;
+
+    Location pickup = 4;
+    Location drop = 5;
+
+    google.protobuf.Timestamp request_time = 6;
+
+    RideStatus status = 7;
+
+}
+
+enum RideStatus {
+    Requested = 0;
+    Ongoing = 1;
+    Completed = 2;
+    Canceled = 3;
+}
